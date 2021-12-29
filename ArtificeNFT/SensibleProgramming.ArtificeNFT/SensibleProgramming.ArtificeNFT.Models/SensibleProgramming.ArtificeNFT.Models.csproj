@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SensibleProgramming.ArtificeNFT.Common\SensibleProgramming.ArtificeNFT.Common.csproj" />
+    <ProjectReference Include="..\SensibleProgramming.ArtificeNFT.Data\SensibleProgramming.ArtificeNFT.Data.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30002.166
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SensibleProgramming.ArtificeNFT", "SensibleProgramming.ArtificeNFT\SensibleProgramming.ArtificeNFT.csproj", "{B57DADB4-075F-49E6-B7BC-09883648C1A2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SensibleProgramming.ArtificeNFT.Data", "SensibleProgramming.ArtificeNFT.Data\SensibleProgramming.ArtificeNFT.Data.csproj", "{E09E8CF2-ACD4-4DFF-A699-D07B01B57B77}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SensibleProgramming.ArtificeNFT.Models", "SensibleProgramming.ArtificeNFT.Models\SensibleProgramming.ArtificeNFT.Models.csproj", "{DAD46B40-18F4-41F0-8C7C-143DDB7ECD74}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SensibleProgramming.ArtificeNFT.Common", "SensibleProgramming.ArtificeNFT.Common\SensibleProgramming.ArtificeNFT.Common.csproj", "{21FA92AF-BA11-4144-84EA-0911DF8C1400}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B57DADB4-075F-49E6-B7BC-09883648C1A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B57DADB4-075F-49E6-B7BC-09883648C1A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B57DADB4-075F-49E6-B7BC-09883648C1A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B57DADB4-075F-49E6-B7BC-09883648C1A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E09E8CF2-ACD4-4DFF-A699-D07B01B57B77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E09E8CF2-ACD4-4DFF-A699-D07B01B57B77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E09E8CF2-ACD4-4DFF-A699-D07B01B57B77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E09E8CF2-ACD4-4DFF-A699-D07B01B57B77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DAD46B40-18F4-41F0-8C7C-143DDB7ECD74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAD46B40-18F4-41F0-8C7C-143DDB7ECD74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAD46B40-18F4-41F0-8C7C-143DDB7ECD74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAD46B40-18F4-41F0-8C7C-143DDB7ECD74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21FA92AF-BA11-4144-84EA-0911DF8C1400}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21FA92AF-BA11-4144-84EA-0911DF8C1400}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21FA92AF-BA11-4144-84EA-0911DF8C1400}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21FA92AF-BA11-4144-84EA-0911DF8C1400}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EC8E9B69-5AC9-452A-8088-C20243E6415C}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,197 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Dev\\Web\\ArtificeNFT\\SensibleProgramming.ArtificeNFT\\SensibleProgramming.ArtificeNFT.Models\\SensibleProgramming.ArtificeNFT.Models.csproj": {}
+  },
+  "projects": {
+    "C:\\Dev\\Web\\ArtificeNFT\\SensibleProgramming.ArtificeNFT\\SensibleProgramming.ArtificeNFT.Common\\SensibleProgramming.ArtificeNFT.Common.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Dev\\Web\\ArtificeNFT\\SensibleProgramming.ArtificeNFT\\SensibleProgramming.ArtificeNFT.Common\\SensibleProgramming.ArtificeNFT.Common.csproj",
+        "projectName": "SensibleProgramming.ArtificeNFT.Common",
+        "projectPath": "C:\\Dev\\Web\\ArtificeNFT\\SensibleProgramming.ArtificeNFT\\SensibleProgramming.ArtificeNFT.Common\\SensibleProgramming.ArtificeNFT.Common.csproj",
+        "packagesPath": "C:\\Users\\Galloway\\.nuget\\packages\\",
+        "outputPath": "C:\\Dev\\Web\\ArtificeNFT\\SensibleProgramming.ArtificeNFT\\SensibleProgramming.ArtificeNFT.Common\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Galloway\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Dev\\Web\\ArtificeNFT\\SensibleProgramming.ArtificeNFT\\SensibleProgramming.ArtificeNFT.Data\\SensibleProgramming.ArtificeNFT.Data.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Dev\\Web\\ArtificeNFT\\SensibleProgramming.ArtificeNFT\\SensibleProgramming.ArtificeNFT.Data\\SensibleProgramming.ArtificeNFT.Data.csproj",
+        "projectName": "SensibleProgramming.ArtificeNFT.Data",
+        "projectPath": "C:\\Dev\\Web\\ArtificeNFT\\SensibleProgramming.ArtificeNFT\\SensibleProgramming.ArtificeNFT.Data\\SensibleProgramming.ArtificeNFT.Data.csproj",
+        "packagesPath": "C:\\Users\\Galloway\\.nuget\\packages\\",
+        "outputPath": "C:\\Dev\\Web\\ArtificeNFT\\SensibleProgramming.ArtificeNFT\\SensibleProgramming.ArtificeNFT.Data\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Galloway\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "C:\\Dev\\Web\\ArtificeNFT\\SensibleProgramming.ArtificeNFT\\SensibleProgramming.ArtificeNFT.Common\\SensibleProgramming.ArtificeNFT.Common.csproj": {
+                "projectPath": "C:\\Dev\\Web\\ArtificeNFT\\SensibleProgramming.ArtificeNFT\\SensibleProgramming.ArtificeNFT.Common\\SensibleProgramming.ArtificeNFT.Common.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.Extensions.Caching.Memory": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Dev\\Web\\ArtificeNFT\\SensibleProgramming.ArtificeNFT\\SensibleProgramming.ArtificeNFT.Models\\SensibleProgramming.ArtificeNFT.Models.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Dev\\Web\\ArtificeNFT\\SensibleProgramming.ArtificeNFT\\SensibleProgramming.ArtificeNFT.Models\\SensibleProgramming.ArtificeNFT.Models.csproj",
+        "projectName": "SensibleProgramming.ArtificeNFT.Models",
+        "projectPath": "C:\\Dev\\Web\\ArtificeNFT\\SensibleProgramming.ArtificeNFT\\SensibleProgramming.ArtificeNFT.Models\\SensibleProgramming.ArtificeNFT.Models.csproj",
+        "packagesPath": "C:\\Users\\Galloway\\.nuget\\packages\\",
+        "outputPath": "C:\\Dev\\Web\\ArtificeNFT\\SensibleProgramming.ArtificeNFT\\SensibleProgramming.ArtificeNFT.Models\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Galloway\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "C:\\Dev\\Web\\ArtificeNFT\\SensibleProgramming.ArtificeNFT\\SensibleProgramming.ArtificeNFT.Common\\SensibleProgramming.ArtificeNFT.Common.csproj": {
+                "projectPath": "C:\\Dev\\Web\\ArtificeNFT\\SensibleProgramming.ArtificeNFT\\SensibleProgramming.ArtificeNFT.Common\\SensibleProgramming.ArtificeNFT.Common.csproj"
+              },
+              "C:\\Dev\\Web\\ArtificeNFT\\SensibleProgramming.ArtificeNFT\\SensibleProgramming.ArtificeNFT.Data\\SensibleProgramming.ArtificeNFT.Data.csproj": {
+                "projectPath": "C:\\Dev\\Web\\ArtificeNFT\\SensibleProgramming.ArtificeNFT\\SensibleProgramming.ArtificeNFT.Data\\SensibleProgramming.ArtificeNFT.Data.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

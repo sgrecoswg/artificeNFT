@@ -1,0 +1,14 @@
+C:\Dev\Web\ArtificeNFT\SensibleProgramming.ArtificeNFT\SensibleProgramming.ArtificeNFT.Models\obj\Debug\netcoreapp3.1\SensibleProgramming.ArtificeNFT.Models.csprojAssemblyReference.cache
+C:\Dev\Web\ArtificeNFT\SensibleProgramming.ArtificeNFT\SensibleProgramming.ArtificeNFT.Models\obj\Debug\netcoreapp3.1\SensibleProgramming.ArtificeNFT.Models.csproj.CoreCompileInputs.cache
+C:\Dev\Web\ArtificeNFT\SensibleProgramming.ArtificeNFT\SensibleProgramming.ArtificeNFT.Models\obj\Debug\netcoreapp3.1\SensibleProgramming.ArtificeNFT.Models.AssemblyInfoInputs.cache
+C:\Dev\Web\ArtificeNFT\SensibleProgramming.ArtificeNFT\SensibleProgramming.ArtificeNFT.Models\obj\Debug\netcoreapp3.1\SensibleProgramming.ArtificeNFT.Models.AssemblyInfo.cs
+C:\Dev\Web\ArtificeNFT\SensibleProgramming.ArtificeNFT\SensibleProgramming.ArtificeNFT.Models\bin\Debug\netcoreapp3.1\SensibleProgramming.ArtificeNFT.Models.deps.json
+C:\Dev\Web\ArtificeNFT\SensibleProgramming.ArtificeNFT\SensibleProgramming.ArtificeNFT.Models\bin\Debug\netcoreapp3.1\SensibleProgramming.ArtificeNFT.Models.dll
+C:\Dev\Web\ArtificeNFT\SensibleProgramming.ArtificeNFT\SensibleProgramming.ArtificeNFT.Models\bin\Debug\netcoreapp3.1\SensibleProgramming.ArtificeNFT.Models.pdb
+C:\Dev\Web\ArtificeNFT\SensibleProgramming.ArtificeNFT\SensibleProgramming.ArtificeNFT.Models\bin\Debug\netcoreapp3.1\SensibleProgramming.ArtificeNFT.Common.dll
+C:\Dev\Web\ArtificeNFT\SensibleProgramming.ArtificeNFT\SensibleProgramming.ArtificeNFT.Models\bin\Debug\netcoreapp3.1\SensibleProgramming.ArtificeNFT.Data.dll
+C:\Dev\Web\ArtificeNFT\SensibleProgramming.ArtificeNFT\SensibleProgramming.ArtificeNFT.Models\bin\Debug\netcoreapp3.1\SensibleProgramming.ArtificeNFT.Common.pdb
+C:\Dev\Web\ArtificeNFT\SensibleProgramming.ArtificeNFT\SensibleProgramming.ArtificeNFT.Models\bin\Debug\netcoreapp3.1\SensibleProgramming.ArtificeNFT.Data.pdb
+C:\Dev\Web\ArtificeNFT\SensibleProgramming.ArtificeNFT\SensibleProgramming.ArtificeNFT.Models\obj\Debug\netcoreapp3.1\SensibleProgramming.ArtificeNFT.Models.csproj.CopyComplete
+C:\Dev\Web\ArtificeNFT\SensibleProgramming.ArtificeNFT\SensibleProgramming.ArtificeNFT.Models\obj\Debug\netcoreapp3.1\SensibleProgramming.ArtificeNFT.Models.dll
+C:\Dev\Web\ArtificeNFT\SensibleProgramming.ArtificeNFT\SensibleProgramming.ArtificeNFT.Models\obj\Debug\netcoreapp3.1\SensibleProgramming.ArtificeNFT.Models.pdb

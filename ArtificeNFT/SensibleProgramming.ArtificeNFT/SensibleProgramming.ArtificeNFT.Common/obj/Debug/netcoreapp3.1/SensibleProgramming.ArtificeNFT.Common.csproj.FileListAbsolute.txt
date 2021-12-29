@@ -1,0 +1,8 @@
+C:\Dev\Web\ArtificeNFT\SensibleProgramming.ArtificeNFT\SensibleProgramming.ArtificeNFT.Common\bin\Debug\netcoreapp3.1\SensibleProgramming.ArtificeNFT.Common.deps.json
+C:\Dev\Web\ArtificeNFT\SensibleProgramming.ArtificeNFT\SensibleProgramming.ArtificeNFT.Common\bin\Debug\netcoreapp3.1\SensibleProgramming.ArtificeNFT.Common.dll
+C:\Dev\Web\ArtificeNFT\SensibleProgramming.ArtificeNFT\SensibleProgramming.ArtificeNFT.Common\bin\Debug\netcoreapp3.1\SensibleProgramming.ArtificeNFT.Common.pdb
+C:\Dev\Web\ArtificeNFT\SensibleProgramming.ArtificeNFT\SensibleProgramming.ArtificeNFT.Common\obj\Debug\netcoreapp3.1\SensibleProgramming.ArtificeNFT.Common.csproj.CoreCompileInputs.cache
+C:\Dev\Web\ArtificeNFT\SensibleProgramming.ArtificeNFT\SensibleProgramming.ArtificeNFT.Common\obj\Debug\netcoreapp3.1\SensibleProgramming.ArtificeNFT.Common.AssemblyInfoInputs.cache
+C:\Dev\Web\ArtificeNFT\SensibleProgramming.ArtificeNFT\SensibleProgramming.ArtificeNFT.Common\obj\Debug\netcoreapp3.1\SensibleProgramming.ArtificeNFT.Common.AssemblyInfo.cs
+C:\Dev\Web\ArtificeNFT\SensibleProgramming.ArtificeNFT\SensibleProgramming.ArtificeNFT.Common\obj\Debug\netcoreapp3.1\SensibleProgramming.ArtificeNFT.Common.dll
+C:\Dev\Web\ArtificeNFT\SensibleProgramming.ArtificeNFT\SensibleProgramming.ArtificeNFT.Common\obj\Debug\netcoreapp3.1\SensibleProgramming.ArtificeNFT.Common.pdb
