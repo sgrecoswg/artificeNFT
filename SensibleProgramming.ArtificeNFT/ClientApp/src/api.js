@@ -281,7 +281,7 @@ export async function saveArtist(artist) {
  * @param {any} artist
  */
 export async function updateArtist(artist) {
-    return await Put(`api/Artists/${artist.id}`, artist);
+    return await Post(`api/Artists/Update/${artist.Id}`, artist);
 }
 
 /**

@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Azure.Cosmos;
 using Microsoft.Azure.Cosmos.Fluent;
-using Microsoft.Extensions.Configuration;
 using SensibleProgramming.ArtificeNFT.Interfaces;
 using SensibleProgramming.ArtificeNFT.Data;
 using Microsoft.Azure.Cosmos.Linq;

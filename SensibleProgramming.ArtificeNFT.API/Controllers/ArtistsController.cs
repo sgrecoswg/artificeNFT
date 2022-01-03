@@ -78,7 +78,7 @@ namespace SensibleProgramming.ArtificeNFT.API.Controllers
         }
 
        
-        [HttpPut]
+        [HttpPost("Update/{id}")]
         public async Task<ActionResult<dynamic>> Put(string id,[FromBody] ArtistViewModel model)
         {
             try

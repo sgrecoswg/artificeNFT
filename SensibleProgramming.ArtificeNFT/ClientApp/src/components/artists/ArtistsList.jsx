@@ -10,14 +10,7 @@ const ArtistsList = () => {
 
     useEffect(() => {
         console.log('ArtistsList');
-        async function getData() {
-            //let response = await saveArtist({
-            //    Name: "Shawn",
-            //    About: "Im new",
-            //    BackgroundImageUrl: "url",
-            //    AvatarImageUrl: "avurl",
-            //});
-
+        async function getData() {      
             let response = await getArtists();
             console.log('ArtistsList response', response);
             switch (response.status) {
@@ -32,10 +25,8 @@ const ArtistsList = () => {
                     break;
                 default:
                     break
-            }
-            
+            }            
         }
-
         getData();
     }, []);
 

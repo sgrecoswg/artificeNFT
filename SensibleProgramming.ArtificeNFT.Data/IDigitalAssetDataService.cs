@@ -10,20 +10,5 @@ namespace SensibleProgramming.ArtificeNFT.Data
         IDigitalAsset Save();
     }
 
-    public class DigitalAssetDataService : IDigitalAssetDataService
-    {
-        public DigitalAssetDataService(IConfiguration config,IMemoryCache cache)
-        {
-
-        }
-        public IDigitalAsset GetById(int id)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public IDigitalAsset Save()
-        {
-            throw new System.NotImplementedException();
-        }
-    }
+   
 }
