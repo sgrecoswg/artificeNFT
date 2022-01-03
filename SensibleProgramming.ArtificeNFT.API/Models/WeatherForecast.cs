@@ -1,6 +1,6 @@
 using System;
 
-namespace SensibleProgramming.ArtificeNFT
+namespace SensibleProgramming.ArtificeNFT.API
 {
     public class WeatherForecast
     {

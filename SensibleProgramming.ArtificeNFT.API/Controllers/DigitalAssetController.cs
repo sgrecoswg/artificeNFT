@@ -9,9 +9,10 @@ using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
 using SensibleProgramming.ArtificeNFT.Data;
 using SensibleProgramming.ArtificeNFT.Interfaces;
+using SensibleProgramming.ArtificeNFT.API.Models;
 using SensibleProgramming.ArtificeNFT.Models;
 
-namespace SensibleProgramming.ArtificeNFT.Controllers
+namespace SensibleProgramming.ArtificeNFT.API.Controllers
 {
 
     [Route("api/[controller]")]

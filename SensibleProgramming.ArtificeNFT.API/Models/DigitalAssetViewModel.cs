@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SensibleProgramming.ArtificeNFT.Models
+namespace SensibleProgramming.ArtificeNFT.API.Models
 {
     public class DigitalAssetViewModel
     {
@@ -20,4 +20,5 @@ namespace SensibleProgramming.ArtificeNFT.Models
             }
         }
     }
+
 }

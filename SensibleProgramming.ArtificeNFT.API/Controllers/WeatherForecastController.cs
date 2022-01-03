@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace SensibleProgramming.ArtificeNFT.Controllers
+namespace SensibleProgramming.ArtificeNFT.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]

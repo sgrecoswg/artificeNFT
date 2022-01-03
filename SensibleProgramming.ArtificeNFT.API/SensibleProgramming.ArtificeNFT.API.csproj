@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+	<LangVersion>9.0</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SensibleProgramming.ArtificeNFT.Common\SensibleProgramming.ArtificeNFT.Common.csproj" />
+    <ProjectReference Include="..\SensibleProgramming.ArtificeNFT.Data.Cosmos\SensibleProgramming.ArtificeNFT.Data.Cosmos.csproj" />
+    <ProjectReference Include="..\SensibleProgramming.ArtificeNFT.Data\SensibleProgramming.ArtificeNFT.Data.csproj" />
+    <ProjectReference Include="..\SensibleProgramming.ArtificeNFT.Models\SensibleProgramming.ArtificeNFT.Models.csproj" />
+  </ItemGroup>
+
+
+</Project>

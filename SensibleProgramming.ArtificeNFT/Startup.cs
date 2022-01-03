@@ -8,7 +8,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SensibleProgramming.ArtificeNFT.Data;
-using SensibleProgramming.ArtificeNFT.Models;
+using SensibleProgramming.ArtificeNFT.Data.Cosmos;
+using System.Threading.Tasks;
 
 namespace SensibleProgramming.ArtificeNFT
 {
@@ -24,13 +25,20 @@ namespace SensibleProgramming.ArtificeNFT
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options => {
+                options.AddPolicy("SpecificOrigins", builder => {
+                    builder.WithOrigins("https://localhost:44328/")
+                            .AllowAnyHeader()
+                            .WithHeaders("GET");
+                            //.AllowCredentials();
+                });
+            });
 
             services.AddControllersWithViews();
 
             services.AddHttpContextAccessor();
             services.AddResponseCaching();
             services.AddMemoryCache();
-            services.AddDataServices(Configuration);
 
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
@@ -53,21 +61,29 @@ namespace SensibleProgramming.ArtificeNFT
                 app.UseHsts();
             }
 
+            app.UseCors(builder => {
+
+                builder.WithOrigins("https://localhost:44328/")
+                        .AllowAnyHeader()
+                        .WithHeaders("GET");
+                        //.AllowCredentials();
+
+            });
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
 
             app.UseRouting();
-
-            AppContext.Configure(app.ApplicationServices.GetRequiredService<IHttpContextAccessor>());
+            
             app.UseResponseCaching();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller}/{action=Index}/{id?}");
-            });
+            //app.UseEndpoints(endpoints =>
+            //{
+            //    endpoints.MapControllerRoute(
+            //        name: "default",
+            //        pattern: "{controller}/{action=Index}/{id?}");
+            //});
 
             app.UseSpa(spa =>
             {
@@ -81,14 +97,19 @@ namespace SensibleProgramming.ArtificeNFT
         }
     }
 
-    public static class StartupX10sions
-    {
-        public static void AddDataServices(this IServiceCollection services,IConfiguration config)
-        {
-            var serviceProvider = services.BuildServiceProvider();
-            IMemoryCache _cache = serviceProvider.GetService<IMemoryCache>();
-
-            services.AddTransient<IDigitalAssetDataService, DigitalAssetDataService> (x => ActivatorUtilities.CreateInstance<DigitalAssetDataService>(x, config, _cache));
-        }
-    }
+   
 }
+
+/*
+ <rewrite>
+    <rules>
+        <rule name="ReactRouter Routes" stopProcessing="true">
+            <conditions logicalGrouping="MatchAll">
+                <match url="*" />
+                <conditions input="[REQUEST_FILENAME]" matchType="IsFile" negate="true" />
+                <conditions input="[REQUEST_FILENAME]" matchType="IsDirectory" negate="true" />
+            </conditions>
+                <action type="Rewrite" url="/<><><>/index.html">
+
+     
+     */

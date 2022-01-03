@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
 
-namespace SensibleProgramming.ArtificeNFT.Controllers
+namespace SensibleProgramming.ArtificeNFT.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -63,6 +63,43 @@ namespace SensibleProgramming.ArtificeNFT.Controllers
             }
         }
 
+        protected ActionResult<dynamic> WarnResponse(dynamic o, string message, Dictionary<string, string> extraData = null)
+        {
+
+            var _p = new Dictionary<string, string>();
+            _p.Add("Controller", RouteData.Values["controller"].ToString());
+            _p.Add("Action", RouteData.Values["action"].ToString());
+            _p.Add("status", "warn");
+            //_p.Add("currentuser", CurrentUser.Name);
+
+            if (extraData != null)
+            {
+                foreach (var p in extraData)
+                {
+                    _p.Add(p.Key, p.Value);
+                }
+            }
+
+            switch (Environment.GetEnvironmentVariable("SP_Enviornment"))
+            {
+                case "Local":
+
+                    return new
+                    {
+                        status = "warn",
+                        message,
+                        items = o
+                    };
+                default:
+                    return new
+                    {
+                        status = "warn",
+                        message,
+                        items = o
+                    };
+            }
+        }
+
         protected ActionResult<dynamic> ErrorResponse(Exception exc)
         {
 
@@ -87,7 +124,7 @@ namespace SensibleProgramming.ArtificeNFT.Controllers
                 default:
                     return new
                     {
-                        status = "success",
+                        status = "error",
                         exc.Message
                     };
             }

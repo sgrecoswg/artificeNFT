@@ -1,7 +1,7 @@
-﻿import { localDb } from 'database'
+﻿import { localDb } from './database';
 //import {appInsights} from './AppInsights';
 //import {SeverityLevel} from '@microsoft/applicationinsights-web';
-let _db = localDb();
+let db = localDb();
 
 const _baseUrl = process.env.REACT_APP_API_BASEURL;
 
@@ -14,7 +14,7 @@ const Get = async (url) => {
     return await fetch(url).then(async (r) => {
         let _text = await r.text();
         try {
-            const _data = JSON.parse(text);
+            const _data = JSON.parse(_text);
             return _data;
         } catch (e) {
             /*
@@ -24,7 +24,7 @@ const Get = async (url) => {
                 properties:{method:`Get ${url}`,text:text}
              });
              */
-            throw new Error('There was an error processing teh data', e);
+            throw new Error('There was an error processing the data', e);
         }
     }).catch((exc) => {
     /*
@@ -38,7 +38,6 @@ const Get = async (url) => {
     });
 }
 
-
 /**
  * 
  * @param {string} url
@@ -48,13 +47,15 @@ const Post = async (url,data) => {
     url = `${_baseUrl}/${url}`;
     return await fetch(url, {
         method: 'POST',
-        header: {"content-type":"application/json"},
         body: JSON.stringify(data),
-        credentials: "include"
+        headers: new Headers({
+            'Content-Type': 'application/json; charset=utf-8'
+        }),
+        //credentials: "include"
     }).then(async (r) => {
         let _text = await r.text();
         try {
-            const _data = JSON.parse(text);
+            const _data = JSON.parse(_text);
             return _data;
         } catch (e) {
             /*
@@ -64,7 +65,7 @@ const Post = async (url,data) => {
                 properties:{method:`Get ${url}`,text:text}
              });
              */
-            throw new Error('There was an error processing teh data', e);
+            throw new Error('There was an error processing the data', e);
         }
     }).catch((exc) => {
         /*
@@ -92,7 +93,7 @@ const PostData = async (url, data) => {
     }).then(async (r) => {
         let _text = await r.text();
         try {
-            const _data = JSON.parse(text);
+            const _data = JSON.parse(_text);
             return _data;
         } catch (e) {
             /*
@@ -102,7 +103,7 @@ const PostData = async (url, data) => {
                 properties:{method:`Get ${url}`,text:text}
              });
              */
-            throw new Error('There was an error processing teh data', e);
+            throw new Error('There was an error processing the data', e);
         }
     }).catch((exc) => {
         /*
@@ -116,10 +117,85 @@ const PostData = async (url, data) => {
     });
 };
 
-
+/**
+ * 
+ * @param {string} url
+ * @param {Object} data
+ */
+const Put = async (url, data) => {
+    url = `${_baseUrl}/${url}`;
+    return await fetch(url, {
+        method: 'PUT',
+        body: JSON.stringify(data),
+        headers: new Headers({
+            'Content-Type': 'application/json; charset=utf-8'
+        }),
+        //credentials: "include"
+    }).then(async (r) => {
+        let _text = await r.text();
+        try {
+            const _data = JSON.parse(_text);
+            return _data;
+        } catch (e) {
+            /*
+             appInsights.trackException({
+                error:e,
+                severityLevel:SeverityLevel.Error,
+                properties:{method:`Get ${url}`,text:text}
+             });
+             */
+            throw new Error('There was an error processing the data', e);
+        }
+    }).catch((exc) => {
+        /*
+             appInsights.trackException({
+                error:e,
+                severityLevel:SeverityLevel.Error,
+                properties:{method:`Get ${url}`,text:text}
+             });
+             */
+        throw exc;
+    });
+};
 
 /**
  * 
+ * @param {string} url
+ * @param {Object} data
+ */
+const Delete = async (url) => {
+    url = `${_baseUrl}/${url}`;
+    return await fetch(url, {
+        method: 'DELETE'
+    }).then(async (r) => {
+        let _text = await r.text();
+        try {
+            const _data = JSON.parse(_text);
+            return _data;
+        } catch (e) {
+            /*
+             appInsights.trackException({
+                error:e,
+                severityLevel:SeverityLevel.Error,
+                properties:{method:`Get ${url}`,text:text}
+             });
+             */
+            throw new Error('There was an error processing the data', e);
+        }
+    }).catch((exc) => {
+        /*
+             appInsights.trackException({
+                error:e,
+                severityLevel:SeverityLevel.Error,
+                properties:{method:`Get ${url}`,text:text}
+             });
+             */
+        throw exc;
+    });
+};
+
+/**
+ * Downloads a file
  * @param {string} url
  * @param {Object} data
  */
@@ -160,13 +236,59 @@ const Download = async (url, data) => {
     * Gets all the artists we have.
     * @returns Promise 
     * */
-    export async function GetArtists() {
-        let _cached = await db.artist.get();
-        if (!_cached || _cached.length === 0) {
-            let _results = await Get('artists');
-            await db.artists.bulkAdd(_results);
-            _cached = db.artists.get();
-        }
-        return _cached;
-    }
+   
 };
+
+/**
+ * Gets artist from local db first
+ * */
+export async function GetArtistsFromLocal() {
+    let _cached = await db.artist.get();
+    if (!_cached || _cached.length === 0) {
+        let _results = await Get('artists');
+        await db.artists.bulkAdd(_results);
+        _cached = db.artists.get();
+    }
+    return _cached;
+}
+
+/**
+ * Gets the artists
+ */
+export async function getArtists() {
+    return await Get(`api/Artists`);
+}
+
+/**
+ * Gets the artist by it's id
+ * @param {any} id
+ */
+export async function getArtist(id) {
+    return await Get(`api/Artists/Get/${id}`);
+}
+
+/**
+ * Saves the artist to the db
+ * @param {any} artist
+ */
+export async function saveArtist(artist) {   
+    return await Post(`api/Artists`,artist);
+}
+
+
+/**
+ * Saves the artist to the db
+ * @param {any} artist
+ */
+export async function updateArtist(artist) {
+    return await Put(`api/Artists/${artist.id}`, artist);
+}
+
+/**
+ * Removes the artist to the db
+ * @param {string} artistId
+ */
+export async function deleteArtist(artistId) {
+    return await Delete(`api/Artists/${artistId}`);
+}
+
