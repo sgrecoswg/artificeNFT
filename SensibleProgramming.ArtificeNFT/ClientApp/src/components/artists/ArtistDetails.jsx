@@ -1,10 +1,9 @@
 ﻿import React, { useEffect, useState, useContext } from 'react';
-import { useParams  } from 'react-router-dom';
+import { useParams, Link, useRouteMatch  } from 'react-router-dom';
 import { UserContext } from '../../UserContext'
 import { BsPencil } from 'react-icons/bs';
 import { Button } from 'react-bootstrap';
-import { Link, useRouteMatch } from 'react-router-dom';
-import { getArtist, updateArtist } from '../../api';
+import { getArtist } from '../../api';
 
 const ArtistDetails = () => {
     const user = useContext(UserContext);
@@ -36,32 +35,7 @@ const ArtistDetails = () => {
         getData();
     }, []);
 
-    /**
-     * Saves changes to the artists to the db     * 
-     * */
-    const updateArtists = async () => {
-        let response = await updateArtist({
-            Id: artist.id,
-            Name: artist.name,
-            About: artist.about,
-            BackgroundImageUrl: artist.backgroundImageUrl,
-            AvatarImageUrl: artist.avatarImageUrl,
-        });
-        console.log('updateArtistsresponse', response);
-        switch (response.status) {
-            case "success":
-                setArtist(response.items);
-                break;
-            case "warn":
-                console.warn(response.message);
-                break;
-            case "error":
-                console.error(response);
-                break;
-            default:
-                break
-        }
-    }
+    
 
     return (
         <div className="artist-container">            
@@ -74,12 +48,10 @@ const ArtistDetails = () => {
                 { artist.about }
             </p>
             <Button as={Link}
-                to="/artists/join"
+                to={`/artist/edit/${artist.id}`}
                 className="action-button"
                 size="sm"
-                variant="secondary"
-                onClick={updateArtists}
-            >
+                variant="secondary">
                 <BsPencil />Edit
             </Button>
         </div>

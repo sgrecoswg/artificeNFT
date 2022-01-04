@@ -9,6 +9,7 @@ import { Counter } from './components/Counter';
 import ArtistDetails from './components/artists/ArtistDetails';
 import ArtistsList from './components/artists/ArtistsList';
 import ArtistCreate from './components/artists/ArtistCreate';
+import ArtistsEdit from './components/artists/ArtistsEdit';
 
 import './custom.css'
 
@@ -34,6 +35,7 @@ export default class App extends Component {
                   <Route exact path='/artists' render={(props) => <ArtistsList {...props} />} />
                   <Route path='/artists/join' render={(props) => <ArtistCreate {...props} />} />
                   <Route exact path='/artist/:id' render={(props) => <ArtistDetails {...props} />} />
+                  <Route exact path='/artist/edit/:id' render={(props) => <ArtistsEdit {...props} />} />
                  
               </Layout>
           </UserContext.Provider>

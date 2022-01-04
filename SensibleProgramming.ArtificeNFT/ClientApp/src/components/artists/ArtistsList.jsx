@@ -1,7 +1,9 @@
 ﻿import React, { useEffect, useState, useContext } from 'react';
 import { UserContext } from '../../UserContext'
 import { Link, useRouteMatch } from 'react-router-dom';
-import { getArtists } from '../../api';
+import { getArtists, deleteArtist } from '../../api';
+import { BsEye,BsX } from 'react-icons/bs';
+import { Button } from 'react-bootstrap';
 
 const ArtistsList = () => {
     const user = useContext(UserContext);
@@ -30,19 +32,45 @@ const ArtistsList = () => {
         getData();
     }, []);
 
+    /**
+     * Removes an artist from the db
+     * @param {any} id
+     */
+    const deleteArtists = async (id) => {
+        if (window.confirm('Are you sure you want to delete this artists?')) {
+            let response = await deleteArtist(id);
+            switch (response.status) {
+                case "success":
+                    setArtists(artists.filter(x => x.id !== id));
+                    break;
+                case "warn":
+                    console.warn(response.message);
+                    break;
+                case "error":
+                    console.error(response);
+                    break;
+                default:
+                    break
+            }
+        }
+    }
+
     return (
         <div>
-            <h1>Artists</h1>
-            <div><Link to="/artists/join">Join</Link></div>
-            <ul>
+            <h1>Artists</h1>            
+            <div className="artists-list">
             {artists.map((a) => {
                 return (
-                    <li key={ a.id }>
-                        {a.name} <Link to={`/artist/${a.id}`}>View</Link>
-                    </li>
+                    <Link to={`/artist/${a.id}`} key={a.id} className="artists-list-item">
+                        <div className="artist-avatar-container-sm">
+                            <img className="artist-avatar-sm" src={a.avatarImageUrl || `${process.env.PUBLIC_URL}/images/defaultuser.png`} />                          
+                        </div>
+                        <div>{a.name}</div>
+                    </Link>                   
                     );
             })}
-                </ul>
+            </div>
+            <div><Link to="/artists/join"><Button variant="secondary">Join</Button></Link></div>
         </div>);
 };
 

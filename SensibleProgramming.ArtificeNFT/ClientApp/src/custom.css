@@ -14,13 +14,54 @@ code {
     justify-content: center;
 }
 
+.artists-list {
+    display: flex;
+    flex-direction: column;
+}
+
+    .artists-list .artists-list-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /*border: 1px solid #000;*/
+        width: 150px;
+        height: 200px;
+        color:#000;
+    }
+
+        .artists-list .artists-list-item:hover {
+            text-decoration:none;
+            cursor:pointer;
+        }
+
+        .artists-list .artists-list-item .artist-avatar-container-sm {
+            /*  position: absolute;
+            height: 100px;
+            display: flex;
+           */
+        }
+
+            .artists-list .artists-list-item .artist-avatar-container-sm .artist-avatar-sm {
+               /* webkit-box-align: center;
+                align-items: center;
+                display: flex;
+                -webkit-box-pack: center;
+                justify-content: center;
+               
+                overflow: hidden;
+                position: relative;*/
+                border-radius: 50%; 
+                height: 100px;
+                width: 100px;
+            }
+
 .artist-container {
     position: absolute;
     height: 300px;
     width: 80%;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .artist-bg { 
