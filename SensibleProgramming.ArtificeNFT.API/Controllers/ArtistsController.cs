@@ -11,6 +11,7 @@ using SensibleProgramming.ArtificeNFT.Data;
 using SensibleProgramming.ArtificeNFT.Data.Cosmos;
 using SensibleProgramming.ArtificeNFT.Interfaces;
 using SensibleProgramming.ArtificeNFT.API.Models;
+using SensibleProgramming.ArtificeNFT.Models;
 
 namespace SensibleProgramming.ArtificeNFT.API.Controllers
 {
@@ -45,6 +46,7 @@ namespace SensibleProgramming.ArtificeNFT.API.Controllers
             }
         }
 
+
         [HttpGet("Get/{id}")]
         public async Task<ActionResult<dynamic>> Get(string id)
         {
@@ -68,8 +70,15 @@ namespace SensibleProgramming.ArtificeNFT.API.Controllers
         {
             try
             {
-                await _service.AddItemAsync(model);
-                return OKResponse(model, "Saved new artists");
+                IArtist _newArtist = await new Artist(_service) {
+                    Name = model.Name,
+                    About = model.About,
+                    BackgroundImageUrl = model.BackgroundImageUrl,
+                    AvatarImageUrl = model.AvatarImageUrl,
+                    PublicAddress = model.PublicAddress
+                }.Save();
+
+                return OKResponse(_newArtist, "Saved new artists");
             }
             catch (Exception exc)
             {
@@ -83,8 +92,17 @@ namespace SensibleProgramming.ArtificeNFT.API.Controllers
         {
             try
             {
-                await _service.UpdateItemAsync(model.Id,model);
-                return OKResponse(model, "Updated new artists");
+                IArtist _artist = await new Artist(_service)
+                {
+                    Name = model.Name,
+                    About = model.About,
+                    Id = model.Id,
+                    BackgroundImageUrl = model.BackgroundImageUrl,
+                    AvatarImageUrl = model.AvatarImageUrl,
+                    PublicAddress = model.PublicAddress
+                }.Update();
+                
+                return OKResponse(_artist, "Updated new artists");
             }
             catch (Exception exc)
             {
@@ -97,7 +115,11 @@ namespace SensibleProgramming.ArtificeNFT.API.Controllers
         {
             try
             {
-                await _service.DeleteItemAsync(id);
+                await new Artist(_service)
+                {                   
+                    Id = id
+                }.Delete();
+               
                 return OKResponse(new { }, "Updated new artists");
             }
             catch (Exception exc)

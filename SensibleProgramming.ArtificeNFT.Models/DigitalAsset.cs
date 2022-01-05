@@ -27,6 +27,7 @@ namespace SensibleProgramming.ArtificeNFT.Models
 
         public async Task<DigitalAsset> Save()
         {
+            if (_service is null) throw new InvalidOperationException("");
             throw new NotImplementedException();
         }
     }
