@@ -15,15 +15,15 @@ const ArtistCreate = () => {
         avatarImageUrl:''
     });
 
-    useEffect(() => {
-        console.log('ArtistCreate');
-    }, []);
-
     useEffect(() => {//just to see what happened
         console.log('Artist changed', artist);
     }, [artist]);
 
-
+    /**
+     * Handles/assigns property changes on the artists from inputs
+     * @param {any} propChanged
+     * @param {any} value
+     */
     const handleChange = (propChanged,value) => {
         try {
             let _copy = _.cloneDeep(artist);//create a copy we can modify
@@ -34,7 +34,6 @@ const ArtistCreate = () => {
             console.error('Error updating artist!', error);
         }
     }
-
 
     /**
      * Adds a new artists to the db

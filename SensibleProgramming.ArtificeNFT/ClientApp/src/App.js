@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 //import { Route } from 'react-router';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { UserContext } from './UserContext';
@@ -15,6 +15,7 @@ import './custom.css'
 
 export default class App extends Component {
   static displayName = App.name;
+   
 
     constructor(props) {
         super(props);
@@ -43,26 +44,3 @@ export default class App extends Component {
     );
   }
 }
-
-              /*
-               
-
-
- <BrowserRouter>
-                      <Switch>
-                          <Route exact path="/">
-                              <Home />
-                          </Route>
-                          <Route exact path="/artists">
-                              <ArtistsList />
-                          </Route>
-                          <Route path="/artists/join">
-                              <ArtistCreate />
-                          </Route>
-                          <Route path="/artist/:id">
-                              <ArtistDetails />
-                          </Route>
-
-                      </Switch>
-                  </BrowserRouter>
-              */

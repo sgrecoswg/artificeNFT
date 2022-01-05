@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Collapse, Container, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import './NavMenu.css';
+import ConnectToWalletButton from './common/ConnectToWalletButton';
 
 export class NavMenu extends Component {
   static displayName = NavMenu.name;
@@ -35,7 +36,10 @@ export class NavMenu extends Component {
                 </NavItem>
                 <NavItem>
                   <NavLink tag={Link} className="text-dark" to="/artists">Artists</NavLink>
-                </NavItem>               
+                </NavItem>
+                <li>
+                   <ConnectToWalletButton />
+                </li>
               </ul>
             </Collapse>
           </Container>

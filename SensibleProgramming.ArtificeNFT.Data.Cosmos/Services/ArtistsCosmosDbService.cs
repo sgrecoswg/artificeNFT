@@ -24,6 +24,7 @@ namespace SensibleProgramming.ArtificeNFT.Data.Cosmos
         public ArtistsCosmosDbService(CosmosClient dbClient, string databaseName, string containerName) : base(dbClient, databaseName, containerName)
         { }
 
+
         public async Task AddItemAsync(IArtist item)
         {
             try
@@ -47,7 +48,15 @@ namespace SensibleProgramming.ArtificeNFT.Data.Cosmos
 
         public async Task DeleteItemAsync(string id)
         {
-            await _container.DeleteItemAsync<ArtistEntity>(id, new PartitionKey(id));
+            try
+            {
+                await _container.DeleteItemAsync<ArtistEntity>(id, new PartitionKey(id));
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }           
         }
 
         public async Task<IArtist> GetItemAsync(string id)
@@ -66,39 +75,57 @@ namespace SensibleProgramming.ArtificeNFT.Data.Cosmos
 
         public async Task<IEnumerable<IArtist>> GetItemsAsync(string queryString="")
         {
-            var q = _container.GetItemLinqQueryable<ArtistEntity>();
-            var iterator = q.ToFeedIterator();
-            var _results = await iterator.ReadNextAsync();
+            try
+            {
+                var q = _container.GetItemLinqQueryable<ArtistEntity>();
+                var iterator = q.ToFeedIterator();
+                var _results = await iterator.ReadNextAsync();
 
-            //if (string.IsNullOrEmpty(queryString)) 
-            //{
-            //    queryString = "select * from Artists";
-            //};
+                //if (string.IsNullOrEmpty(queryString)) 
+                //{
+                //    queryString = "select * from Artists";
+                //};
 
-            //var query = _container.GetItemQueryIterator<ArtistEntity>(new QueryDefinition(queryString));
-            //List <ArtistEntity> results = new List<ArtistEntity>();
-            //while (query.HasMoreResults)
-            //{
-            //    var response = await query.ReadNextAsync();
+                //var query = _container.GetItemQueryIterator<ArtistEntity>(new QueryDefinition(queryString));
+                //List <ArtistEntity> results = new List<ArtistEntity>();
+                //while (query.HasMoreResults)
+                //{
+                //    var response = await query.ReadNextAsync();
 
-            //    results.AddRange(response.ToList());
-            //}
+                //    results.AddRange(response.ToList());
+                //}
 
-            return _results;
+                return _results;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }           
         }
+
 
         public async Task UpdateItemAsync(string id, IArtist item)
         {
-            ArtistEntity _newEntity = new ArtistEntity()
+            try
             {
-                Id = item.Id,
-                About = item.About,
-                AvatarImageUrl = item.AvatarImageUrl,
-                BackgroundImageUrl = item.BackgroundImageUrl,
-                Name = item.Name
-            };
+                ArtistEntity _newEntity = new ArtistEntity()
+                {
+                    Id = item.Id,
+                    About = item.About,
+                    AvatarImageUrl = item.AvatarImageUrl,
+                    BackgroundImageUrl = item.BackgroundImageUrl,
+                    Name = item.Name,
+                    PublicAddress = item.PublicAddress
+                };
 
-            await this._container.UpsertItemAsync<ArtistEntity>(_newEntity, new PartitionKey(id));
+                await this._container.UpsertItemAsync<ArtistEntity>(_newEntity, new PartitionKey(id));
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }            
         }
     }
 }

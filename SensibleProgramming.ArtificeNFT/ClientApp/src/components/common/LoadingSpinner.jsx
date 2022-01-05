@@ -2,15 +2,16 @@
 import { Spinner } from 'react-bootstrap';
 
 
-export default LoadingSpinner = ({ message}) => {
+const LoadingSpinner = ({ message }) => {
 
     return (
-        <div className="overlay">
-            <div className="d-flex justify-content-center spinner">
-                <Spinner animation="border" role="status">
-                    <span className="sr-only">Loading { message || ''}</span>
-                </Spinner>
+        <div className="overlay d-flex justify-content-center">
+            <div className="spinner">
+                <Spinner animation="border" role="status"></Spinner>
             </div>
+            <span > {message || "Loading..."}</span>
         </div>
         );
 }
+
+export default LoadingSpinner;

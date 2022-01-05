@@ -8,7 +8,7 @@ export class Home extends Component {
   render () {
     return (
       <div>
-        <h1>Welcom to Artifice NFT!</h1>
+        <h1>Welcome to Artifice NFT!</h1>
       </div>
     );
   }

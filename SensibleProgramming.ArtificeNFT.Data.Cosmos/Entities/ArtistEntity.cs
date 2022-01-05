@@ -20,5 +20,8 @@ namespace SensibleProgramming.ArtificeNFT.Data.Cosmos
         [JsonProperty(PropertyName = "avatar")]
         public string AvatarImageUrl { get; set; }
 
+        [JsonProperty(PropertyName = "publicaddress")]
+        public string PublicAddress { get; set; }
+
     }
 }

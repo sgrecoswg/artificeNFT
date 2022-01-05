@@ -12,6 +12,8 @@ namespace SensibleProgramming.ArtificeNFT.API.Models
         public string BackgroundImageUrl { get; set; }
         public string AvatarImageUrl { get; set; }
 
+        public string PublicAddress { get; set; }
+
         public static ArtistViewModel From(IArtist artist)
         {
             return new() {
@@ -19,7 +21,8 @@ namespace SensibleProgramming.ArtificeNFT.API.Models
                 About = artist.About,
                 Id = artist.Id,
                 BackgroundImageUrl = artist.BackgroundImageUrl,
-                AvatarImageUrl = artist.AvatarImageUrl
+                AvatarImageUrl = artist.AvatarImageUrl,
+                PublicAddress = artist.PublicAddress
             };
         }
 

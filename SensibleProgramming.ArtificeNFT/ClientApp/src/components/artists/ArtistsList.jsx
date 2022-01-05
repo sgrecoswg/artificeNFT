@@ -4,15 +4,18 @@ import { Link, useRouteMatch } from 'react-router-dom';
 import { getArtists, deleteArtist } from '../../api';
 import { BsEye,BsX } from 'react-icons/bs';
 import { Button } from 'react-bootstrap';
+import  LoadingSpinner  from '../common/LoadingSpinner';
+
 
 const ArtistsList = () => {
     const user = useContext(UserContext);
     //const { url, path  } = useRouteMatch();
     const [artists, setArtists] = useState([]);
-
+    const [isLoadingData, setIsLoadingData] = useState(false);
+    console.log('user', user);
     useEffect(() => {
-        console.log('ArtistsList');
-        async function getData() {      
+        async function getData() {
+            setIsLoadingData(true);
             let response = await getArtists();
             console.log('ArtistsList response', response);
             switch (response.status) {
@@ -27,7 +30,8 @@ const ArtistsList = () => {
                     break;
                 default:
                     break
-            }            
+            }
+            setIsLoadingData(false);
         }
         getData();
     }, []);
@@ -54,24 +58,26 @@ const ArtistsList = () => {
             }
         }
     }
-
+    
     return (
         <div>
             <h1>Artists</h1>            
             <div className="artists-list">
-            {artists.map((a) => {
-                return (
-                    <Link to={`/artist/${a.id}`} key={a.id} className="artists-list-item">
-                        <div className="artist-avatar-container-sm">
-                            <img className="artist-avatar-sm" src={a.avatarImageUrl || `${process.env.PUBLIC_URL}/images/defaultuser.png`} />                          
-                        </div>
-                        <div>{a.name}</div>
-                    </Link>                   
-                    );
-            })}
-            </div>
-            <div><Link to="/artists/join"><Button variant="secondary">Join</Button></Link></div>
+                {isLoadingData ? <LoadingSpinner message="Loading artists" /> :
+                    artists.map((a) => {
+                        return (
+                            <Link to={`/artist/${a.id}`} key={a.id} className="artists-list-item">
+                                <div className="artist-avatar-container-sm">
+                                    <img className="artist-avatar-sm" src={a.avatarImageUrl || `${process.env.PUBLIC_URL}/images/defaultuser.png`} />
+                                </div>
+                                <div>{a.name}</div>
+                            </Link>
+                        );
+                    })
+                }               
+            </div>           
         </div>);
 };
 
 export default ArtistsList;
+/**/
