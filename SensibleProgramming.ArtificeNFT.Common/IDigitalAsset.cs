@@ -4,7 +4,7 @@ namespace SensibleProgramming.ArtificeNFT.Interfaces
 {
     public interface IDigitalAsset
     {
-        int ArtistId { get; set; }
+        string ArtistId { get; set; }
         string FileName { get; set; }
         byte[] Data { get; set; }
         DateTime CreatedOn { get; set; }

@@ -31,14 +31,15 @@ namespace SensibleProgramming.ArtificeNFT.Data.Cosmos
             {
                 ArtistEntity _newEntity = new ArtistEntity()
                 {
-                    Id = Guid.NewGuid().ToString(),
+                    Id = item.PublicAddress,//Guid.NewGuid().ToString(),
                     About = item.About,
                     AvatarImageUrl = item.AvatarImageUrl,
                     BackgroundImageUrl = item.BackgroundImageUrl,
-                    Name = item.Name
+                    Name = item.Name,
+                    //PublicAddress = item.PublicAddress
                 };
 
-                await _container.CreateItemAsync<ArtistEntity>(_newEntity, new PartitionKey(_newEntity.Id));
+                await _container.CreateItemAsync(_newEntity, new PartitionKey(_newEntity.Id));
             }
             catch (Exception)
             {
@@ -70,7 +71,6 @@ namespace SensibleProgramming.ArtificeNFT.Data.Cosmos
             {
                 return null;
             }
-
         }
 
         public async Task<IEnumerable<IArtist>> GetItemsAsync(string queryString="")
@@ -81,13 +81,13 @@ namespace SensibleProgramming.ArtificeNFT.Data.Cosmos
                 var iterator = q.ToFeedIterator();
                 var _results = await iterator.ReadNextAsync();
 
-                //if (string.IsNullOrEmpty(queryString)) 
+                //if (string.IsNullOrEmpty(queryString))
                 //{
-                //    queryString = "select * from Artists";
+                //    queryString = "select * from Artists where PublicAddress = ";
                 //};
 
                 //var query = _container.GetItemQueryIterator<ArtistEntity>(new QueryDefinition(queryString));
-                //List <ArtistEntity> results = new List<ArtistEntity>();
+                //List<ArtistEntity> results = new List<ArtistEntity>();
                 //while (query.HasMoreResults)
                 //{
                 //    var response = await query.ReadNextAsync();

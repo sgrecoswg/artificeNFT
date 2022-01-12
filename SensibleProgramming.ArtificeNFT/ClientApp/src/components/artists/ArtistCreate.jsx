@@ -7,7 +7,7 @@ import { BsPencil } from 'react-icons/bs';
 import { Button } from 'react-bootstrap';
 
 const ArtistCreate = () => {
-    const user = useContext(UserContext);
+    const publicWalletAddress= useContext(UserContext);
     const [artist, setArtist] = useState({
         name: '',
         about: '',
@@ -40,12 +40,15 @@ const ArtistCreate = () => {
      * */
     const createArtists = async () => {
 
-        let response = await saveArtist({
+        let newArtist = {
             Name: artist.name,
             About: artist.about,
             BackgroundImageUrl: artist.backgroundImageUrl,
             AvatarImageUrl: artist.avatarImageUrl,
-        });
+            PublicAddress: publicWalletAddress.value
+        };
+        
+        let response = await saveArtist(newArtist);
         console.log('createArtists response', response);
         switch (response.status) {
             case "success":

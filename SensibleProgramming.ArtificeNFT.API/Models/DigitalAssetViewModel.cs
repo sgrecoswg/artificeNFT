@@ -10,7 +10,7 @@ namespace SensibleProgramming.ArtificeNFT.API.Models
 
         public byte[] Data { get; set; }
         public string MimeType { get; set; }
-        public int ArtistId { get; set; }
+        public string ArtistId { get; set; }
 
         public string FileData
         {

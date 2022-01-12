@@ -1,7 +1,7 @@
 ﻿import React, { useEffect, useState, useContext } from 'react';
 import { UserContext } from '../../UserContext'
 import { Link, useRouteMatch } from 'react-router-dom';
-import { getArtists, deleteArtist } from '../../api';
+import { getArtists } from '../../api';
 import { BsEye,BsX } from 'react-icons/bs';
 import { Button } from 'react-bootstrap';
 import  LoadingSpinner  from '../common/LoadingSpinner';
@@ -9,10 +9,9 @@ import  LoadingSpinner  from '../common/LoadingSpinner';
 
 const ArtistsList = () => {
     const user = useContext(UserContext);
-    //const { url, path  } = useRouteMatch();
     const [artists, setArtists] = useState([]);
     const [isLoadingData, setIsLoadingData] = useState(false);
-    console.log('user', user);
+   
     useEffect(() => {
         async function getData() {
             setIsLoadingData(true);
@@ -36,28 +35,7 @@ const ArtistsList = () => {
         getData();
     }, []);
 
-    /**
-     * Removes an artist from the db
-     * @param {any} id
-     */
-    const deleteArtists = async (id) => {
-        if (window.confirm('Are you sure you want to delete this artists?')) {
-            let response = await deleteArtist(id);
-            switch (response.status) {
-                case "success":
-                    setArtists(artists.filter(x => x.id !== id));
-                    break;
-                case "warn":
-                    console.warn(response.message);
-                    break;
-                case "error":
-                    console.error(response);
-                    break;
-                default:
-                    break
-            }
-        }
-    }
+  
     
     return (
         <div>
@@ -68,7 +46,12 @@ const ArtistsList = () => {
                         return (
                             <Link to={`/artist/${a.id}`} key={a.id} className="artists-list-item">
                                 <div className="artist-avatar-container-sm">
-                                    <img className="artist-avatar-sm" src={a.avatarImageUrl || `${process.env.PUBLIC_URL}/images/defaultuser.png`} />
+                                    <img className="artist-avatar-sm"
+                                        src={`${process.env.PUBLIC_URL}/images/users/${a.id}/avatar.jpg`}
+                                        onError={({ currentTarget }) => {
+                                            currentTarget.onerror  = null;
+                                            currentTarget.src = `${process.env.PUBLIC_URL}/images/defaultuser.png`;
+                                        }} />
                                 </div>
                                 <div>{a.name}</div>
                             </Link>

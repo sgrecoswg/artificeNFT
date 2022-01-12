@@ -1,14 +1,19 @@
 ﻿import React, { useContext, useEffect, useState } from 'react';
-import { Spinner,Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { Spinner, Button, NavDropdown } from 'react-bootstrap';
+import { NavLink } from 'reactstrap';
 import { ethers } from 'ethers';
 import { UserContext } from '../../UserContext'
+import { getArtist } from '../../api';
 
 const ConnectToWalletButton = () => {
     const [isLoadingData, setIsLoadingData] = useState(false);
     const [currentAccount, setCurrentAccount] = useState(null);
+    const [artist, setArtist] = useState({});
     let context = useContext(UserContext);
 
     const checkWalletIsConnected = async () => {
+
         const { ethereum } = window;
         if (!ethereum) {
             console.warn('No meta mask');
@@ -18,11 +23,10 @@ const ConnectToWalletButton = () => {
 
         setIsLoadingData(true);
         const accounts = await ethereum.request({ method: 'eth_accounts' });
-        if (accounts.length !== 0) {
-            console.log('wallet', accounts[0]);            
-            //setContext({ address: accounts[0] });
-            context = accounts[0];
-            console.log('context', context);
+        if (accounts.length !== 0) {           
+            let _address = accounts[0];
+            let _foundArtists = await getArtist(_address);
+            context.value = accounts[0];
             setCurrentAccount(accounts[0]);
         }
         setIsLoadingData(false);
@@ -70,34 +74,51 @@ const ConnectToWalletButton = () => {
         
         async function getData() {
             setIsLoadingData(true);
-            //let response = await getArtists();
-            //console.log('ArtistsList response', response);
-            //switch (response.status) {
-            //    case "success":
-            //        setArtists(response.items);
-            //        break;
-            //    case "warn":
-            //        console.warn(response.message);
-            //        break;
-            //    case "error":
-            //        console.error(response);
-            //        break;
-            //    default:
-            //        break
-            //}
+            let response = await getArtist(currentAccount);
+            console.log('ConnectToWalletButton get artists by wallet response', response);
+            switch (response.status) {
+                case "success":
+                    setArtist(response.items);
+                    break;
+                case "warn":
+                    console.warn(response.message);
+                    break;
+                case "error":
+                    console.error(response);
+                    break;
+                default:
+                    break
+            }
             setIsLoadingData(false);
         }
 
         checkWalletIsConnected();
         if (currentAccount && currentAccount.length > 0) {
+            console.log('currentAccount', currentAccount);
              getData();
         }
        
     }, []);
 
     return (<>
-        {currentAccount?
-            <label>Connected</label>
+        {currentAccount && currentAccount.length > 0?
+            <NavDropdown title={
+                <div className="float-left artist-avatar-container-login">
+                    <img className="artist-avatar-login"
+                        alt={`${artist.name} avatar`}
+                        src={`${process.env.PUBLIC_URL}/images/users/${context.value}/avatar.jpg`}
+                        onError={({ currentTarget }) => {
+                            currentTarget.onerror = null;
+                            currentTarget.src = `${process.env.PUBLIC_URL}/images/defaultuser.png`;
+                        }} />
+                </div>
+            }  id="basic-nav-dropdown">
+                <NavDropdown.Item href={`/artist/${context.value}`}>Your Profile</NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.2">Your Profile</NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item href="#action/3.4">Log out</NavDropdown.Item>
+            </NavDropdown>
             :
             connectWalletButton()
         }
@@ -105,3 +126,7 @@ const ConnectToWalletButton = () => {
 }
 
 export default ConnectToWalletButton;
+
+/*
+ <NavLink tag={Link} className="text-dark" to={`/artist/${context.value}`}>Your Profile</NavLink>
+ */

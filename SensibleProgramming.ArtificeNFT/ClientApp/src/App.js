@@ -27,20 +27,17 @@ export default class App extends Component {
 
   render () {
       return (
-          <UserContext.Provider value={this.state.user || {}}>
-              <Layout>
-                  <Route exact path='/' component={Home} />
-                  <Route path='/counter' component={Counter} />
-                  <Route path='/fetch-data' component={FetchData} />
-
-                  <Route exact path='/artists' render={(props) => <ArtistsList {...props} />} />
-                  <Route path='/artists/join' render={(props) => <ArtistCreate {...props} />} />
-                  <Route exact path='/artist/:id' render={(props) => <ArtistDetails {...props} />} />
-                  <Route exact path='/artist/edit/:id' render={(props) => <ArtistsEdit {...props} />} />
-                 
-              </Layout>
-          </UserContext.Provider>
-     
+         <UserContext.Provider value={this.state.context || {}}>
+            <Layout>
+                <Route exact path='/' component={Home} />
+                <Route path='/counter' component={Counter} />
+                <Route path='/fetch-data' component={FetchData} />
+                <Route exact path='/artists' render={(props) => <ArtistsList {...props} />} />
+                <Route path='/artists/create' render={(props) => <ArtistCreate {...props} />} />
+                <Route exact path='/artist/:id' render={(props) => <ArtistDetails {...props} />} />
+                <Route exact path='/artist/edit/:id' render={(props) => <ArtistsEdit {...props} />} />               
+            </Layout>
+         </UserContext.Provider>     
     );
   }
 }

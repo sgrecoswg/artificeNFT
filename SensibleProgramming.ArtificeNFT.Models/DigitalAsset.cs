@@ -18,7 +18,7 @@ namespace SensibleProgramming.ArtificeNFT.Models
             _service = service;
         }
 
-        public int ArtistId { get; set; }
+        public string ArtistId { get; set; }
         public string FileName { get; set; }
         public byte[] Data { get; set; }
         public DateTime CreatedOn { get; set; }

@@ -89,7 +89,7 @@ const PostData = async (url, data) => {
     return await fetch(url, {
         method: 'POST',       
         body: data,
-        credentials: "include"
+       // credentials: "include"
     }).then(async (r) => {
         let _text = await r.text();
         try {
@@ -290,5 +290,15 @@ export async function updateArtist(artist) {
  */
 export async function deleteArtist(artistId) {
     return await Delete(`api/Artists/${artistId}`);
+}
+
+/**
+ * Uploads an avatar image to the server
+ * @param {string} id The artists id
+ * @param {FormData} formData
+ */
+export async function uploadAvatar(id, formData) {
+    console.log('uploadAvatarToServer', id, formData);
+    return await PostData(`api/DigitalAsset/Upload/${id}`, formData);
 }
 
