@@ -67,7 +67,7 @@ const ArtistDetails = () => {
 
     return (
         <div className="artist-container">            
-            <div className="artist-bg" style={{ backgroundImage: `url("${process.env.PUBLIC_URL}/images/users/${artist.id}/bg.jpg")` }}></div>
+            <div className="artist-bg" style={{ backgroundImage: `url("${process.env.PUBLIC_URL}/images/users/${artist.id}/background.jpg")` }}></div>
             <div className="artist-avatar-container">              
                 <img className="artist-avatar" src={`${process.env.PUBLIC_URL}/images/users/${artist.id}/avatar.jpg`}
                     onError={({ currentTarget }) => {

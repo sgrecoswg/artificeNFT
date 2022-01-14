@@ -12,6 +12,7 @@ using SensibleProgramming.ArtificeNFT.Interfaces;
 using SensibleProgramming.ArtificeNFT.API.Models;
 using SensibleProgramming.ArtificeNFT.Models;
 using Microsoft.Extensions.Configuration;
+using SensibleProgramming.ArtificeNFT.Extensions;
 
 namespace SensibleProgramming.ArtificeNFT.API.Controllers
 {
@@ -49,8 +50,8 @@ namespace SensibleProgramming.ArtificeNFT.API.Controllers
             }
         }
 
-        [HttpPost("Upload/{id}")]
-        public async Task<ActionResult<dynamic>> Upload(string id,IFormCollection form)
+        [HttpPost("Upload/{id}/{imageType:regex(avatar|Avatar|Background|background)}")]
+        public async Task<ActionResult<dynamic>> Upload(string id,string imageType,IFormCollection form)
         {
             try
             {
@@ -62,29 +63,32 @@ namespace SensibleProgramming.ArtificeNFT.API.Controllers
 
                 foreach (IFormFile file in form.Files)
                 {
-                    using (var stream = new FileStream(_userFilePath + "/avatar.jpg", FileMode.Create))
-                    {
-                        file.CopyTo(stream);
-                    }
                     //using (var target = new MemoryStream())
                     //{
-                    //    //file.CopyTo(target);
-                    //    //byte[] _bytes = target.ToArray();
+                    //    file.CopyTo(target);
+                    //    target.ToBitmap()
+                    //        //.ScaleToHeight(225)
+                    //        .Save(_userFilePath + $"/{imageType}.jpg");
+
                     //    //IDigitalAsset _asset = await new DigitalAsset(_service)
                     //    //{
                     //    //    ArtistId = id,
                     //    //    FileName = file.FileName,
-                    //    //    Data = _bytes,
+                    //    //    Data = target.ToArray(),
                     //    //    CreatedOn = DateTime.Now,
                     //    //    CreatedBy = "",
-                    //    //    MimeType=file.ContentType
+                    //    //    MimeType = file.ContentType
                     //    //}.Save();
 
                     //    //_list.Add(_asset);
                     //}
+                    using (var stream = new FileStream(_userFilePath + $"/{imageType}.jpg", FileMode.Create))
+                    {
+                        file.CopyTo(stream);
+                    }
                 }
 
-                return OKResponse(_list,"File uploaded");
+                return OKResponse(_list,$"{imageType} file uploaded");
 
             }
             catch (Exception e)
@@ -93,9 +97,11 @@ namespace SensibleProgramming.ArtificeNFT.API.Controllers
             }
 
         }
+        //
 
-       
     }
 
-   
+
+    
+
 }

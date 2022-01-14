@@ -299,6 +299,16 @@ export async function deleteArtist(artistId) {
  */
 export async function uploadAvatar(id, formData) {
     console.log('uploadAvatarToServer', id, formData);
-    return await PostData(`api/DigitalAsset/Upload/${id}`, formData);
+    return await PostData(`api/DigitalAsset/Upload/${id}/avatar`, formData);
+}
+
+/**
+ * Uploads an background image to the server
+ * @param {string} id The artists id
+ * @param {FormData} formData
+ */
+export async function uploadBackground(id, formData) {
+    console.log('uploadAvatarToServer', id, formData);
+    return await PostData(`api/DigitalAsset/Upload/${id}/background`, formData);
 }
 

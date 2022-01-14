@@ -10,5 +10,5 @@ namespace SensibleProgramming.ArtificeNFT.Interfaces
         DateTime CreatedOn { get; set; }
         string CreatedBy { get; set; }
         string MimeType { get; set; }
-    }
+    }    
 }

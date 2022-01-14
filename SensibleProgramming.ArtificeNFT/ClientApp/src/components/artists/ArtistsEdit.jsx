@@ -1,7 +1,7 @@
 ﻿import React, { useEffect, useState, useContext } from 'react';
 import { useParams, Link, useRouteMatch } from 'react-router-dom';
 import { UserContext } from '../../UserContext'
-import { getArtist, updateArtist, uploadAvatar } from '../../api';
+import { getArtist, updateArtist, uploadAvatar, uploadBackground } from '../../api';
 import _ from 'lodash';
 import { BsPencil } from 'react-icons/bs';
 import { Button } from 'react-bootstrap';
@@ -77,7 +77,8 @@ const ArtistsEdit = () => {
         switch (response.status) {
             case "success":
                 setArtist(response.items);
-                if (artistAvatarFileBlob) uploadAvatarToServer();
+                if (artistAvatarFileBlob) await uploadAvatarToServer();
+                if (artistBackGroundFileBlob) await uploadBackGroundToServer();
                 break;
             case "warn":
                 console.warn(response.message);
@@ -104,7 +105,7 @@ const ArtistsEdit = () => {
      * Uploads the avatar file to the server
      * */
     const uploadAvatarToServer = async () => {
-        const formdata = new FormData();
+        let formdata = new FormData();
         formdata.append("formFile", artistAvatarFile);
         formdata.append("formFileName", artistAvatarFileName);
         try {
@@ -143,34 +144,46 @@ const ArtistsEdit = () => {
      * Uploads the avatar file to the server
      * */
     const uploadBackGroundToServer = async () => {
-        const formdata = new FormData();
-        formdata.append("formFile", artistAvatarFile);
-        formdata.append("formFileName", artistAvatarFileName);
-        //try {
-        //    let response = await uploadAvatar(artist.id, formdata);
-        //    console.log('uploadAvatar response', response);
-        //    switch (response.status) {
-        //        case "success":
-        //            setArtist(response.items);
-        //            break;
-        //        case "warn":
-        //            console.warn(response.message);
-        //            break;
-        //        case "error":
-        //            console.error(response);
-        //            break;
-        //        default:
-        //            break
-        //    }
-        //} catch (e) {
-        //    console.error('Error saving avatar', e);
-        //}
+        let bgFormData = new FormData();
+        bgFormData.append("formFile", artistBackGroundFile);
+        bgFormData.append("formFileName", artistBackGroundFileName);
+        try {
+            let response = await uploadBackground(artist.id, bgFormData);
+            console.log('uploadBackground response', response);
+            switch (response.status) {
+                case "success":
+                    setArtist(response.items);
+                    break;
+                case "warn":
+                    console.warn(response.message);
+                    break;
+                case "error":
+                    console.error(response);
+                    break;
+                default:
+                    break
+            }
+        } catch (e) {
+            console.error('Error saving avatar', e);
+        }
     }
-       
 
     return (
     <div className="artist-container">
-            <div className="artist-bg" style={{ backgroundImage: `url("${process.env.PUBLIC_URL}/images/users/${artist.id}/bg.jpg")` }}></div>
+            <div className="artist-bg">
+                <div className="image-upload">
+                    <img className="artist-bg-img"
+                        src={artistBackGroundFileBlob || `${process.env.PUBLIC_URL}/images/users/${artist.id}/background.jpg`}
+                        onError={({ currentTarget }) => {
+                            currentTarget.onerror = null;
+                            currentTarget.src = `${process.env.PUBLIC_URL}/images/defaultuser.png`;
+                        }} />
+                </div>
+                <label htmlFor="bg-file-input" className="overlay">
+                    <div><BsPencil color="white" /></div>
+                </label>
+                <input id="bg-file-input" type="file" onChange={saveBackGroundFile} />
+            </div>
             <Avatar saveAvatarFile={saveAvatarFile} source={artistAvatarFileBlob || `${process.env.PUBLIC_URL}/images/users/${artist.id}/avatar.jpg`}/>
             <div className="form-group" style={{marginTop:'50px'}}>
                 <label>Name:*</label>
@@ -187,8 +200,7 @@ const ArtistsEdit = () => {
                 variant="secondary">
                 Cancel
             </Button>
-            <Button variant="success" onClick={updateArtists}>Save</Button>
-
+            <Button variant="success" onClick={updateArtists}>Save</Button>           
     </div>);
 };
 
