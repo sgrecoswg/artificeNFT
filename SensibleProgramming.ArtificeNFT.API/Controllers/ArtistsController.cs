@@ -99,7 +99,9 @@ namespace SensibleProgramming.ArtificeNFT.API.Controllers
                     Id = model.Id,
                     BackgroundImageUrl = model.BackgroundImageUrl,
                     AvatarImageUrl = model.AvatarImageUrl,
-                    PublicAddress = model.PublicAddress
+                    PublicAddress = model.PublicAddress,
+                    Email = model.Email,
+                    OtherUrls = model.OtherUrls
                 }.Update();
                 
                 return OKResponse(_artist, "Updated new artists");

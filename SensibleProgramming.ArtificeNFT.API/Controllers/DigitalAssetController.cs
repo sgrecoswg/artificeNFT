@@ -24,9 +24,10 @@ namespace SensibleProgramming.ArtificeNFT.API.Controllers
         IDigitalAssetDataService _service;
         IConfiguration _config;
 
-        public DigitalAssetController(ILogger<DigitalAssetViewModel> logger, IMemoryCache cache,IConfiguration config) : base(logger,cache)
+        public DigitalAssetController(ILogger<DigitalAssetViewModel> logger, IMemoryCache cache,IConfiguration config, IDigitalAssetDataService service) : base(logger,cache)
         {
             _config = config;
+            _service = service;
         }
 
         [HttpPost("Get/{id}")]
@@ -60,32 +61,31 @@ namespace SensibleProgramming.ArtificeNFT.API.Controllers
                 string _userFilePath = _baseUrl + id;
                 if (!Directory.Exists(_userFilePath)) Directory.CreateDirectory(_userFilePath);
 
-
                 foreach (IFormFile file in form.Files)
                 {
-                    //using (var target = new MemoryStream())
-                    //{
-                    //    file.CopyTo(target);
-                    //    target.ToBitmap()
-                    //        //.ScaleToHeight(225)
-                    //        .Save(_userFilePath + $"/{imageType}.jpg");
-
-                    //    //IDigitalAsset _asset = await new DigitalAsset(_service)
-                    //    //{
-                    //    //    ArtistId = id,
-                    //    //    FileName = file.FileName,
-                    //    //    Data = target.ToArray(),
-                    //    //    CreatedOn = DateTime.Now,
-                    //    //    CreatedBy = "",
-                    //    //    MimeType = file.ContentType
-                    //    //}.Save();
-
-                    //    //_list.Add(_asset);
-                    //}
-                    using (var stream = new FileStream(_userFilePath + $"/{imageType}.jpg", FileMode.Create))
+                    using (var target = new MemoryStream())
                     {
-                        file.CopyTo(stream);
+                        file.CopyTo(target);
+
+                        IDigitalAsset _asset = await new DigitalAsset(_service)
+                        {
+                            ArtistId = id,
+                            FileName = file.FileName,
+                            Data = target.ToArray(),
+                            CreatedOn = DateTime.Now,
+                            CreatedBy = "",
+                            MimeType = file.ContentType,
+                            Path = $"{_userFilePath}/{imageType}.jpg"
+                        }.Save();
+
+                        _list.Add(_asset);
+
+                        //target.ToBitmap().Save(_userFilePath + $"/{imageType}.jpg");
                     }
+                    //using (var stream = new FileStream(_userFilePath + $"/{imageType}.jpg", FileMode.Create))
+                    //{
+                    //    file.CopyTo(stream);
+                    //}
                 }
 
                 return OKResponse(_list,$"{imageType} file uploaded");
@@ -97,7 +97,7 @@ namespace SensibleProgramming.ArtificeNFT.API.Controllers
             }
 
         }
-        //
+
 
     }
 

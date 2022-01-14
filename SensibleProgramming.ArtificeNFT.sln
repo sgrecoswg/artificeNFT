@@ -21,9 +21,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{272197
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Models", "Models", "{E18FB4E2-5FC5-4702-A4F1-9ACD6684A43D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SensibleProgramming.ArtificeNFT.API", "SensibleProgramming.ArtificeNFT.API\SensibleProgramming.ArtificeNFT.API.csproj", "{E2D1BE3D-082A-4D14-8971-FF67878103AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SensibleProgramming.ArtificeNFT.API", "SensibleProgramming.ArtificeNFT.API\SensibleProgramming.ArtificeNFT.API.csproj", "{E2D1BE3D-082A-4D14-8971-FF67878103AB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{B2AFDDFA-00FB-4D57-9A22-BCB721B7BABD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SensibleProgramming.ArtificeNFT.FileIO", "SensibleProgramming.ArtificeNFT.FileIO\SensibleProgramming.ArtificeNFT.FileIO.csproj", "{4A2E09BD-E3CD-4729-9926-AD37A7C19CB0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,6 +57,10 @@ Global
 		{E2D1BE3D-082A-4D14-8971-FF67878103AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E2D1BE3D-082A-4D14-8971-FF67878103AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E2D1BE3D-082A-4D14-8971-FF67878103AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A2E09BD-E3CD-4729-9926-AD37A7C19CB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A2E09BD-E3CD-4729-9926-AD37A7C19CB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A2E09BD-E3CD-4729-9926-AD37A7C19CB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A2E09BD-E3CD-4729-9926-AD37A7C19CB0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -66,6 +72,7 @@ Global
 		{21FA92AF-BA11-4144-84EA-0911DF8C1400} = {27219743-D59D-4444-9688-F99584045DA5}
 		{67E7556E-1BDE-4EBC-AA1B-65C3E6D755F6} = {C87AD0A8-1AD6-4278-B580-F00273719772}
 		{E2D1BE3D-082A-4D14-8971-FF67878103AB} = {B2AFDDFA-00FB-4D57-9A22-BCB721B7BABD}
+		{4A2E09BD-E3CD-4729-9926-AD37A7C19CB0} = {C87AD0A8-1AD6-4278-B580-F00273719772}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EC8E9B69-5AC9-452A-8088-C20243E6415C}

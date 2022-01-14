@@ -7,7 +7,7 @@ namespace SensibleProgramming.ArtificeNFT.Data
     public interface IDigitalAssetDataService
     {
         IDigitalAsset GetById(int id);
-        IDigitalAsset Save();
+        IDigitalAsset Save(IDigitalAsset asset);
     }
 
    

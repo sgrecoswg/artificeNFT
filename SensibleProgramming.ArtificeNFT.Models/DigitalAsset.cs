@@ -24,11 +24,13 @@ namespace SensibleProgramming.ArtificeNFT.Models
         public DateTime CreatedOn { get; set; }
         public string CreatedBy { get; set; }
         public string MimeType { get; set; }
+        public string Path { get; set; }
 
         public async Task<DigitalAsset> Save()
         {
-            if (_service is null) throw new InvalidOperationException("");
-            throw new NotImplementedException();
+            if (_service is null) throw new InvalidOperationException("Service is empty");
+            _service.Save(this);
+            return this;
         }
     }
 }

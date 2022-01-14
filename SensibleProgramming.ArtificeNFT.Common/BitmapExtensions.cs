@@ -1,9 +1,7 @@
 ﻿
 using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using System.Linq;
 namespace SensibleProgramming.ArtificeNFT.Extensions
 {
     public static class BitmapExtensions
@@ -88,4 +86,5 @@ namespace SensibleProgramming.ArtificeNFT.Extensions
             return imageData.ScaleToHeight(height).ToBytes();
         }
     }
+   
 }

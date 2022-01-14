@@ -1,9 +1,10 @@
 ﻿import React, { useEffect, useState, useContext } from 'react';
-import { useParams, Link, useRouteMatch  } from 'react-router-dom';
+import { useParams, Link  } from 'react-router-dom';
 import { UserContext } from '../../UserContext'
-import { BsPencil,BsX } from 'react-icons/bs';
+import { BsPencil } from 'react-icons/bs';
 import { Button } from 'react-bootstrap';
-import { getArtist, deleteArtist } from '../../api';
+import { getArtist } from '../../api';
+import Avatar from '../common/Avatar';
 
 const ArtistDetails = () => {
     const user = useContext(UserContext);
@@ -42,50 +43,17 @@ const ArtistDetails = () => {
 
     console.log('user', user);
 
-    /**
-   * Removes an artist from the db   
-   */
-    const deleteArtists = async () => {
-        if (window.confirm('Are you sure you want to delete this artists?')) {
-            let response = await deleteArtist(artist.id);
-            switch (response.status) {
-                case "success":
-                    console.info(response.message);
-                    //setArtists(artists.filter(x => x.id !== id));
-                    break;
-                case "warn":
-                    console.warn(response.message);
-                    break;
-                case "error":
-                    console.error(response);
-                    break;
-                default:
-                    break
-            }
-        }
-    }
 
     return (
         <div className="artist-container">            
-            <div className="artist-bg" style={{ backgroundImage: `url("${process.env.PUBLIC_URL}/images/users/${artist.id}/background.jpg")` }}></div>
-            <div className="artist-avatar-container">              
-                <img className="artist-avatar" src={`${process.env.PUBLIC_URL}/images/users/${artist.id}/avatar.jpg`}
-                    onError={({ currentTarget }) => {
-                        currentTarget.onerror = null;
-                        currentTarget.src = `${process.env.PUBLIC_URL}/images/defaultuser.png`;
-                    }} />
-            </div>            
+            <div className="artist-bg" style={{ backgroundSize:"cover", backgroundImage: `url("${process.env.PUBLIC_URL}/images/users/${artist.id}/background.jpg")` }}></div>
+          
+            <Avatar source={`${process.env.PUBLIC_URL}/images/users/${artist.id}/avatar.jpg`}/>
             <div><h3>{artist.name}</h3></div>
+            <div>{user.value}</div>
             <p>{ artist.about }</p>
             {user.value === artist.id ?
-                <div style={{display:'flex'}}>
-                      <Button
-                        onClick={deleteArtists}
-                        className="action-button"
-                        size="sm"
-                        variant="secondary">
-                        <BsX />Delete Profile
-                    </Button>
+                <div style={{display:'flex'}}>                     
                     <Button as={Link}
                         to={`/artist/edit/${artist.id}`}
                         className="action-button"
@@ -95,8 +63,7 @@ const ArtistDetails = () => {
                     </Button>
                 </div>
                :''
-            }
-            
+            }            
         </div>
     );
 };

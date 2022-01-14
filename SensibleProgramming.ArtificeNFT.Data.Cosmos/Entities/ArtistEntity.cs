@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using SensibleProgramming.ArtificeNFT.Interfaces;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace SensibleProgramming.ArtificeNFT.Data.Cosmos
@@ -22,6 +23,12 @@ namespace SensibleProgramming.ArtificeNFT.Data.Cosmos
 
         [JsonProperty(PropertyName = "publicaddress")]
         public string PublicAddress { get; set; }
+
+        [JsonProperty(PropertyName = "email")]
+        public string Email { get; set; }
+
+        [JsonProperty(PropertyName = "otherurls")]
+        public Dictionary<string, string> OtherUrls { get; set; } = new Dictionary<string, string>();
 
     }
 }

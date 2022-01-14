@@ -15,7 +15,7 @@ namespace SensibleProgramming.ArtificeNFT.Data.Cosmos
             throw new System.NotImplementedException();
         }
 
-        public IDigitalAsset Save()
+        public IDigitalAsset Save(IDigitalAsset asset)
         {
             throw new System.NotImplementedException();
         }

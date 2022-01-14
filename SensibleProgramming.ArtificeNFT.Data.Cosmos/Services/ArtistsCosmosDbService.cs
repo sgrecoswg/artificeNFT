@@ -31,12 +31,13 @@ namespace SensibleProgramming.ArtificeNFT.Data.Cosmos
             {
                 ArtistEntity _newEntity = new ArtistEntity()
                 {
-                    Id = item.PublicAddress,//Guid.NewGuid().ToString(),
+                    Id = item.PublicAddress,
                     About = item.About,
                     AvatarImageUrl = item.AvatarImageUrl,
                     BackgroundImageUrl = item.BackgroundImageUrl,
                     Name = item.Name,
-                    //PublicAddress = item.PublicAddress
+                    Email = item.Email,
+                    OtherUrls = item.OtherUrls
                 };
 
                 await _container.CreateItemAsync(_newEntity, new PartitionKey(_newEntity.Id));
@@ -116,7 +117,9 @@ namespace SensibleProgramming.ArtificeNFT.Data.Cosmos
                     AvatarImageUrl = item.AvatarImageUrl,
                     BackgroundImageUrl = item.BackgroundImageUrl,
                     Name = item.Name,
-                    PublicAddress = item.PublicAddress
+                    PublicAddress = item.PublicAddress,
+                    Email = item.Email,
+                    OtherUrls = item.OtherUrls
                 };
 
                 await this._container.UpsertItemAsync<ArtistEntity>(_newEntity, new PartitionKey(id));

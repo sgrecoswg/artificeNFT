@@ -1,6 +1,7 @@
 ﻿using SensibleProgramming.ArtificeNFT.Data;
 using SensibleProgramming.ArtificeNFT.Interfaces;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace SensibleProgramming.ArtificeNFT.Models
@@ -14,7 +15,8 @@ namespace SensibleProgramming.ArtificeNFT.Models
         public string Id { get; set; }
         public string Name { get; set; }
         public string PublicAddress { get; set; }
-
+        public string Email { get; set; }
+        public Dictionary<string, string> OtherUrls { get; set; } = new Dictionary<string, string>();
 
         public Artist(IArtistsCosmosDbService service)
         {

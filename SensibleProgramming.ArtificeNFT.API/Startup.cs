@@ -14,6 +14,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using SensibleProgramming.ArtificeNFT.Data;
 using SensibleProgramming.ArtificeNFT.Data.Cosmos;
+using SensibleProgramming.ArtificeNFT.FileIO;
 
 namespace SensibleProgramming.ArtificeNFT.API
 {
@@ -94,7 +95,8 @@ namespace SensibleProgramming.ArtificeNFT.API
             var serviceProvider = services.BuildServiceProvider();
             IMemoryCache _cache = serviceProvider.GetService<IMemoryCache>();
 
-            services.AddTransient<IDigitalAssetDataService, DigitalAssetDataService>(x => ActivatorUtilities.CreateInstance<DigitalAssetDataService>(x, config, _cache));
+            //services.AddTransient<IDigitalAssetDataService, DigitalAssetDataService>(x => ActivatorUtilities.CreateInstance<DigitalAssetDataService>(x, config, _cache));
+            services.AddTransient<IDigitalAssetDataService, DigitalAssestFileIOService>(x => ActivatorUtilities.CreateInstance<DigitalAssestFileIOService>(x, config, _cache));
 
             var _cosmosConfig = config.GetSection("CosmosDb");
             string databaseName = _cosmosConfig.GetSection("DatabaseName").Value;
