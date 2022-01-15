@@ -243,3 +243,7 @@ code {
 .artist-avatar-container:hover .overlay {
     opacity: 1;
 }
+
+.dropdown-menu.show {
+    transform: translate(0px, 40px) !important;
+}

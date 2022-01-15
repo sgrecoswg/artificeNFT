@@ -2,8 +2,8 @@
 import { useParams, Link, useRouteMatch } from 'react-router-dom';
 import { UserContext } from '../../UserContext'
 import { getArtist, updateArtist, uploadAvatar, uploadBackground, deleteArtist } from '../../api';
-import _, { forIn } from 'lodash';
-import { BsPencil,BsX } from 'react-icons/bs';
+import _ from 'lodash';
+import { BsX } from 'react-icons/bs';
 import { Button } from 'react-bootstrap';
 import EditableAvatar from '../common/EditableAvatar';
 import EditableBackground from '../common/EditableBackground';
@@ -57,15 +57,21 @@ const ArtistsEdit = () => {
         for(var url in artist.otherUrls) {
             _temp.push(url);
         }
-
-        return (<>
+        /*
+       
+         
+         */
+        return (<> 
             {_temp.map((t,i) => {
-                return (<div className="form-group" key={`otherUrls_${i}`}>
-                    <label>{t}:</label>
-                    <input className="form-control" defaultValue={artist[t]} onChange={(e) => handleChange(t, e.target.value)} />
-                </div >);
+                return (
+                    <div className="form-group" key={`otherUrls_${i}`}>
+                        <label>{t}:</label>
+                        <input className="form-control" defaultValue={artist[t]} onChange={(e) => handleChange(t, e.target.value)} />
+                    </div >
+                    );
                 })
-            }</>);
+            }
+        </>);
     }
 
     /**
@@ -258,6 +264,8 @@ const ArtistsEdit = () => {
                 <label>Email:</label>
                 <textarea className="form-control" defaultValue={artist.email} onChange={(e) => handleChange('email', e.target.value)} />
             </div>
+
+          
 
             <OtherUrlsComponent/>
 

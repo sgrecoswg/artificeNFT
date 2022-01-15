@@ -25,7 +25,7 @@ const ConnectToWalletButton = () => {
         const accounts = await ethereum.request({ method: 'eth_accounts' });
         if (accounts.length !== 0) {           
             let _address = accounts[0];
-            let _foundArtists = await getArtist(_address);
+            //let _foundArtists = await getArtist(_address);
             context.value = accounts[0];
             setCurrentAccount(accounts[0]);
         }
@@ -102,7 +102,8 @@ const ConnectToWalletButton = () => {
 
     return (<>
         {currentAccount && currentAccount.length > 0?
-            <NavDropdown title={
+            <NavDropdown
+                title={
                 <div className="float-left artist-avatar-container-login">
                     <img className="artist-avatar-login"
                         alt={`${artist.name} avatar`}
@@ -114,10 +115,7 @@ const ConnectToWalletButton = () => {
                 </div>
             }  id="basic-nav-dropdown">
                 <NavDropdown.Item href={`/artist/${context.value}`}>Your Profile</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">Your Profile</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">Log out</NavDropdown.Item>
+               
             </NavDropdown>
             :
             connectWalletButton()
@@ -128,5 +126,8 @@ const ConnectToWalletButton = () => {
 export default ConnectToWalletButton;
 
 /*
- <NavLink tag={Link} className="text-dark" to={`/artist/${context.value}`}>Your Profile</NavLink>
+  <NavDropdown.Item href="/">Your Collection</NavDropdown.Item>
+                <NavDropdown.Item href="/">Something</NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item href="/">Log out</NavDropdown.Item>
  */
