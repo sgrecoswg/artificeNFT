@@ -10,6 +10,8 @@ import { WebServices } from './components/services/WebServices';
 import { Automation } from './components/services/Automation';
 import { Services } from './components/Services';
 import { CryptoverseServices } from './components/services/cryptoverse/CryptoverseServices';
+import { NFTServices } from './components/services/cryptoverse/NFTServices';
+import { ContactUs } from './components/ContactUs';
 
 
 import './custom.css'
@@ -42,6 +44,8 @@ export default class App extends Component {
             <Route path='/services/web' component={WebServices} />
             <Route path='/services/automation' component={Automation} />
             <Route path='/services/crypto/home' component={CryptoverseServices} />
+            <Route path='/services/crypto/nft' component={NFTServices} />
+            <Route path='/contact' component={ContactUs} />
             
       </Layout>
     );

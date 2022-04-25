@@ -42,7 +42,7 @@ export class CryptoverseServices extends Component {
                             <Card.Text>
                                 Create the next great NFT.
                             </Card.Text>
-                            <Link to="/services/crypto">
+                            <Link to="/services/crypto/nft">
                                 <Button variant="dark">Start creating</Button>
                             </Link>
                         </Card.Body>

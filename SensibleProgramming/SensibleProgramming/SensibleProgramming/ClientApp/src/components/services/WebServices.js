@@ -20,7 +20,7 @@ export class WebServices extends Component {
       <div>
         <h1>Web services</h1>
 
-        <p>Still thinking about it.</p>
+        <p>Is it time to step out of the "Build your site" applications and own your own? Call us and we can see what is right for you.</p>
 
         
       </div>

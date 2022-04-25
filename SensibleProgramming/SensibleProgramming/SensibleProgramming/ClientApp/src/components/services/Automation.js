@@ -18,9 +18,9 @@ export class Automation extends Component {
   render() {
     return (
       <div>
-        <h1>automation services</h1>
+        <h1>Automation services</h1>
 
-        <p>Still thinking about it.</p>
+        <p>Work smarter, not harder. Can automating common tasks help you get back to doing he things you love? Call us and we can see what would work best for you.</p>
 
         
       </div>

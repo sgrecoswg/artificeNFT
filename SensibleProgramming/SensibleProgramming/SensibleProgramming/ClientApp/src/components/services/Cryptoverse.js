@@ -20,7 +20,7 @@ export class Cryptoverse extends Component {
       <div>
             <h1>Cryptoverse services</h1>
 
-        <p>Still thinking about it.</p>
+        <p>Thinking about exploring all teh wonders of the cryptoverse? We can help! From NFTs to creating your own crypto currency.</p>
 
         
       </div>

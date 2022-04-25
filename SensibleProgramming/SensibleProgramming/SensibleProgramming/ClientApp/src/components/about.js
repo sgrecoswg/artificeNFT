@@ -18,11 +18,10 @@ export class About extends Component {
   render() {
     return (
       <div>
-        <h1>About</h1>
+        <h1>About Us</h1>
 
-        <p>Still thinking about it.</p>
-
-        
+        <p>Building solutions for your business needs is our passion. We can help you discover your companies true potential.</p>
+        <p>Building form scratch is our specialty, turning your idea into reality in a step by step approach allows us to scale our prices to only get what you need.</p>
       </div>
     );
   }
